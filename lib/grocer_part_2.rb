@@ -34,9 +34,7 @@ end
   
 
 def apply_clearance(cart)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
+binding.pry
   clearance_cart = {}
   cart.each do |food, info|
     clearance_cart[food] = {}
