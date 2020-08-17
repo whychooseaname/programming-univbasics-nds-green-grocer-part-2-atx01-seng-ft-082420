@@ -22,15 +22,6 @@ def apply_coupons(cart, coupons)
 end
 
 
-#apply coupons
- # iterate through cart
- # iterate through coupons
-#  find matches and add "W/COUPON"
-#  divide price by the number of coupons
-#  add regular and coupon items to an array 
-#  return array 
-  
-
 def apply_clearance(cart)
 #binding.pry
   cart.map do |item|
@@ -41,16 +32,9 @@ def apply_clearance(cart)
   end
 end
 
+
+
 def checkout(cart, coupons)
-  # Consult README for inputs and outputs
-  #
-  # This method should call
-  # * consolidate_cart
-  # * apply_coupons
-  # * apply_clearance
-  #
-  # BEFORE it begins the work of calculating the total (or else you might have
-  # some irritated customers
   
   cart = consolidate_cart(cart)
   cart = apply_coupons(cart,coupons)
