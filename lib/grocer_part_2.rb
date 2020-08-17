@@ -4,21 +4,21 @@ def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
-  cart={}
-  #binding.pry
-  cart.each do |food, value|
-    coupons.each do |coupon|
-      binding.pry 
-      if food == coupon[:item] && value[:count] >= coupon[:num]
-        value[:count] = value[:count] - coupon[:num]
-        if cart["#{food} W/COUPON"]
-          result["#{food} W/COUPON"]
-        else 
-          cart["#{food} W/COUPON"] = [:price => coupon[:cost], :clearance => info[:clearance], :count => 1]
-        end
-      end
+  i = 0
+  coupons.each do |coupon|
+    binding.pry
+    item_with_coupon = find_item_by_name_in_collection(coupon[:item], cart)
+    item_is_in_basket = !!item_with_coupon
+    count_is_big_enough_to_apply = item_is_in_basket && item_with_coupon[:count] >= coupon[:num]
+    if item_is_in_basket and count_is_big_enough_to_apply
+      cart << { item: "#{item_with_coupon[:item]} W/COUPON", 
+                price: coupon[:cost] / coupon[:num], 
+                clearance: item_with_coupon[:clearance],
+                count: coupon[:num]
+              }
+      item_with_coupon[:count] -= coupon[:num]
     end
-    cart[food]=value
+    i += 1
   end
   cart
 end
