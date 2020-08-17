@@ -1,11 +1,7 @@
 require_relative './part_1_solution.rb'
 
 def apply_coupons(cart, coupons)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
   coupons.each do |coupon|
-    #binding.pry
     item_with_coupon = find_item_by_name_in_collection(coupon[:item], cart)
     item_is_in_basket = !!item_with_coupon
     count_is_big_enough_to_apply = item_is_in_basket && item_with_coupon[:count] >= coupon[:num]
