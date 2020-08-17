@@ -4,20 +4,23 @@ def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
-  cart_array=[]
+  cart={}
   #binding.pry
   cart.each do |food, value|
     coupons.each do |coupon|
-      if value == coupons{:item}
-        if cart_array["#{food} W/COUPON"]
+      if food == coupon[:item] && value[:count] >= coupon[:num]
+        value[:count] = value[:count] - coupon[:num]
+        if cart["#{food} W/COUPON"]
+          result["#{food} W/COUPON"]
         else 
-          cart_array["#{food} W/COUPON"] = [:price => coupon[:cost], :clearance => info[:clearance], :count => 1]
+          cart["#{food} W/COUPON"] = [:price => coupon[:cost], :clearance => info[:clearance], :count => 1]
         end
       end
     end
   end
   cart_array
 end
+
 
 #apply coupons
  # iterate through cart
