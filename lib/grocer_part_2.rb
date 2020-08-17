@@ -61,4 +61,3 @@ def checkout(cart, coupons)
   end
   result > 100 ? result * 0.9 : result
 end
-end
