@@ -17,6 +17,7 @@ def apply_coupons(cart, coupons)
         end
       end
     end
+    cart[:food]=value
   end
   cart
 end
