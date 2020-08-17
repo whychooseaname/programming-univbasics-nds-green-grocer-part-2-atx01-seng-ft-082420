@@ -4,7 +4,6 @@ def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
-  i = 0
   coupons.each do |coupon|
     #binding.pry
     item_with_coupon = find_item_by_name_in_collection(coupon[:item], cart)
@@ -18,7 +17,6 @@ def apply_coupons(cart, coupons)
               }
       item_with_coupon[:count] -= coupon[:num]
     end
-    i += 1
   end
   cart
 end
