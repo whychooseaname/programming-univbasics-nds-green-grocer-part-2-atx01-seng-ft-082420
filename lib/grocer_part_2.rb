@@ -36,12 +36,12 @@ end
 
 def checkout(cart, coupons)
   
-  cart = consolidate_cart(cart)
-  cart = apply_coupons(cart,coupons)
-  cart = apply_clearance(cart)
+  new_cart = consolidate_cart(cart)
+  new_cart = apply_coupons(cart,coupons)
+  new_cart = apply_clearance(cart)
   binding.pry 
   total = 0
-  cart.each do |item|
+  new_cart.each do |item|
     total += item[:price] * item[:count]
   end
   total *= 0.9 if total > 100
