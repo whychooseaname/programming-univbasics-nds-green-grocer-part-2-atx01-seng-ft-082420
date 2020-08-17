@@ -35,19 +35,12 @@ end
 
 def apply_clearance(cart)
 #binding.pry
-  clearance_cart = {}
-  cart.each do |food, info|
-    binding.pry 
-    clearance_cart[food] = {}
-    if info[:clearance] == true
-      clearance_cart[food][:price] = info[:price] * 0.8
-    else
-      clearance_cart[food][:price] = info[:price]
+  cart.map do |item|
+    if item[:clearance]
+      item[:price] *= 0.8
     end
-    clearance_cart[food][:clearance] = info[:clearance]
-    clearance_cart[food][:count] = info[:count]
+    item
   end
-  clearance_cart
 end
 
 def checkout(cart, coupons)
