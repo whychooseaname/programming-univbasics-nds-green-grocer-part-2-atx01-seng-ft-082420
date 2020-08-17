@@ -37,7 +37,18 @@ def apply_clearance(cart)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
-  
+  clearance_cart = {}
+  cart.each do |food, info|
+    clearance_cart[food] = {}
+    if info[:clearance] == true
+      clearance_cart[food][:price] = info[:price] * .8
+    else
+      clearance_cart[food][:price] = info[:price]
+    end
+    clearance_cart[food][:clearance] = info[:clearance]
+    clearance_cart[food][:count] = info[:count]
+  end
+  clearance_cart
 end
 
 def checkout(cart, coupons)
