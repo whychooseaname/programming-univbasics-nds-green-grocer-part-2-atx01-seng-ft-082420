@@ -4,7 +4,29 @@ def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
+  cart_array=[]
+  #binding.pry
+  cart.each do |food, value|
+    coupons.each do |coupon|
+      if value == coupons[:item]
+        if cart_array["#{food} W/COUPON"]
+        else 
+          cart_array["#{food} W/COUPON"] = [:price => coupon[:cost], :clearance => info[:clearance], :count => 1]
+        end
+      end
+    end
+  end
+  cart_array
 end
+
+#apply coupons
+ # iterate through cart
+ # iterate through coupons
+#  find matches and add "W/COUPON"
+#  divide price by the number of coupons
+#  add regular and coupon items to an array 
+#  return array 
+  
 
 def apply_clearance(cart)
   # Consult README for inputs and outputs
@@ -22,4 +44,9 @@ def checkout(cart, coupons)
   #
   # BEFORE it begins the work of calculating the total (or else you might have
   # some irritated customers
+  
+  cart = consolidate_cart(cart)
+  cart = apply_coupons(cart,coupons)
+  cart = apply_clearance(cart)
+  
 end
