@@ -8,7 +8,7 @@ def apply_coupons(cart, coupons)
   #binding.pry
   cart.each do |food, value|
     coupons.each do |coupon|
-      if value == coupons[:item]
+      if value == coupons{:item}
         if cart_array["#{food} W/COUPON"]
         else 
           cart_array["#{food} W/COUPON"] = [:price => coupon[:cost], :clearance => info[:clearance], :count => 1]
